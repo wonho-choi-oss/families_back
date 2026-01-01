@@ -99,6 +99,7 @@ def refresh():
     if not refresh_token:
         return jsonify({"message": "리프레시 토큰 필요"}), 401
 
+
     try:
         data = jwt.decode(refresh_token, current_app.config['REFRESH_SECRET_KEY'], algorithms=['HS256'])
         user_id = data['sub']
